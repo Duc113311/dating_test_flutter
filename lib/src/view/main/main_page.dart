@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:dating_test/src/general/constants/app_colors.dart';
-import 'package:dating_test/src/general/constants/app_images.dart';
+import 'package:dating_test/src/view/explore/explore_page.dart';
+import 'package:dating_test/src/view/home/home_page.dart';
+import 'package:dating_test/src/view/message/message_page.dart';
+import 'package:dating_test/src/view/profile/profile_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hexcolor/hexcolor.dart';
+import '../../general/constants/app_colors.dart';
+import '../../general/constants/app_images.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -12,20 +14,29 @@ class MainPage extends StatefulWidget {
   State<MainPage> createState() => _MainPageState();
 }
 
-class _MainPageState extends State<MainPage> with TickerProviderStateMixin{
+class _MainPageState extends State<MainPage>
+    with SingleTickerProviderStateMixin, WidgetsBindingObserver {
+  // const
   late TabController _tabController;
-
-  final List<Tab> topTabs = <Tab>[
-    const Tab(text: 'Profile'),
-    const Tab(text: 'Match'),
-    const Tab(text: 'Chat'),
-  ];
+  TabbarItems selectedItem = TabbarItems.home;
 
   @override
   void initState() {
     // TODO: implement initState
+    WidgetsBinding.instance.addObserver(this);
+
+    _tabController = TabController(
+        initialIndex: selectedItem.index,
+        length: TabbarItems.values.length,
+        vsync: this);
+
+    _tabController.addListener(() {
+      setState(() {
+        selectedItem = TabbarItem.init(_tabController.index);
+      });
+    });
+
     super.initState();
-    _tabController = TabController(vsync: this, length: 3);
   }
 
   @override
@@ -35,24 +46,31 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin{
     _tabController.dispose();
   }
 
+  // UI
   @override
   Widget build(BuildContext context) {
-    return PopScope(child: mainView());
+    return PopScope(
+      child: mainView(),
+    );
   }
 
   Widget mainView() {
     return Scaffold(
-      body:  Column(
+      body: Column(
         children: [
+          // if (tabIndex == 0) _renderAppBar(context),
           Expanded(
-              child: TabBarView(
-            controller: _tabController,
-            children: const [
-              Center(child: Text("Home Page")),
-              Center(child: Text("Search Page")),
-              Center(child: Text("Profile Page")),
-            ],
-          ))
+            child: TabBarView(
+              controller: _tabController,
+              physics: const ClampingScrollPhysics(),
+              children: const [
+                HomePage(),
+                ExplorePage(),
+                MessagePage(),
+                ProfilePage()
+              ],
+            ),
+          ),
         ],
       ),
       bottomNavigationBar: _menuBar(),
@@ -69,14 +87,28 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin{
               top:
                   BorderSide(color: Theme.of(context).dividerColor, width: 1))),
       child: BottomNavigationBar(
-        backgroundColor: HexColor("021242"),
+        backgroundColor: const Color(0xFF021242),
         showSelectedLabels: false,
         showUnselectedLabels: false,
         type: BottomNavigationBarType.fixed,
+        onTap: (value) async {
+          setState(() {
+            selectedItem = TabbarItem.init(value);
+          });
+          _tabController.animateTo(selectedItem.index,
+              duration: const Duration(milliseconds: 200),
+              curve: Curves.easeIn);
+
+          // if (selectedItem == TabbarItems.profile) {
+          //   await ApiProfileSetting.getProfile(force: true);
+          // }
+        },
         items: [
           BottomNavigationBarItem(
               icon: SvgPicture.asset(
-                AppImages.icHomeTabSelected,
+                selectedItem == TabbarItems.home
+                    ? AppImages.icHomeTabSelected
+                    : AppImages.icHomeTab,
                 height: iconSize,
                 width: iconSize,
                 allowDrawingOutsideViewBox: true,
@@ -84,7 +116,9 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin{
               label: ''),
           BottomNavigationBarItem(
               icon: SvgPicture.asset(
-                AppImages.icExploreTabSelected,
+                selectedItem == TabbarItems.search
+                    ? AppImages.icExploreTabSelected
+                    : AppImages.icExploreTab,
                 height: iconSize,
                 width: iconSize,
                 allowDrawingOutsideViewBox: true,
@@ -92,7 +126,9 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin{
               label: ''),
           BottomNavigationBarItem(
               icon: SvgPicture.asset(
-                AppImages.icMessageTabSelected,
+                selectedItem == TabbarItems.chat
+                    ? AppImages.icMessageTabSelected
+                    : AppImages.icMessageTab,
                 height: iconSize,
                 width: iconSize,
                 allowDrawingOutsideViewBox: true,
@@ -100,7 +136,9 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin{
               label: ''),
           BottomNavigationBarItem(
               icon: CircleAvatar(
-                backgroundColor: AppColors.color323232,
+                backgroundColor: selectedItem == TabbarItems.profile
+                    ? AppColors.primaryColor
+                    : AppColors.color323232,
                 radius: iconSize / 2,
                 child: CachedNetworkImage(
                   errorWidget: (context, url, error) => const SizedBox(),
@@ -117,5 +155,38 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin{
         ],
       ),
     );
+  }
+}
+
+// Enum tab
+enum TabbarItems { home, search, chat, profile }
+
+extension TabbarItem on TabbarItems {
+  int get index {
+    switch (this) {
+      case TabbarItems.home:
+        return 0;
+      case TabbarItems.search:
+        return 1;
+      case TabbarItems.chat:
+        return 2;
+      case TabbarItems.profile:
+        return 3;
+    }
+  }
+
+  static TabbarItems init(int index) {
+    switch (index) {
+      case 0:
+        return TabbarItems.home;
+      case 1:
+        return TabbarItems.search;
+      case 2:
+        return TabbarItems.chat;
+      case 3:
+        return TabbarItems.profile;
+      default:
+        return TabbarItems.home;
+    }
   }
 }

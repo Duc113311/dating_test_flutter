@@ -36,7 +36,7 @@ class _InitPageState extends State<InitPage> {
   Widget build(BuildContext context) {
     return const GetMaterialApp(
       // Bổ sung thêm các config khác
-      debugShowCheckedModeBanner: true,
+      debugShowCheckedModeBanner: false,
       home: MainPage(),
     );
   }

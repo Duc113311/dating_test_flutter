@@ -3,6 +3,8 @@ export 'package:flutter_svg/svg.dart';
 class AppImages {
   // Image png
   static const String bgLogin = 'assets/images/png/bg_login.png';
+  static const String appIcon = 'assets/png/app_icon.png';
+
 
   // Image svg
   static const String icHomeTab = 'assets/images/svg/ic_home_tab.svg';
