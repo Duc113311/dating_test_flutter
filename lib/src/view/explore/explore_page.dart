@@ -26,6 +26,7 @@ class _ExplorePageState extends State<ExplorePage> {
 
   @override
   Widget build(BuildContext context) {
+    const title = "Meloha";
     return Scaffold(
       appBar: AppBar(
         surfaceTintColor: Colors.transparent,
@@ -35,7 +36,17 @@ class _ExplorePageState extends State<ExplorePage> {
             statusBarIconBrightness: Brightness.light),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [AutoSizeText('Meloha'.toUpperCase()), const Spacer()],
+          children: [
+            AutoSizeText(
+              title.toUpperCase(),
+              style: const TextStyle(
+                  color: Color(0xFF000000),
+                  fontSize: 28,
+                  fontFamily: "Livvic Bold",
+                  fontWeight: FontWeight.w700),
+            ),
+            const Spacer()
+          ],
         ),
       ),
       body: const TopicView(),

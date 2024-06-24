@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:dating_test/src/general/constants/app_constants.dart';
+import 'package:dating_test/src/general/constants/app_enum.dart';
 import 'package:dating_test/src/general/constants/app_pref_key.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:sp_util/sp_util.dart';
