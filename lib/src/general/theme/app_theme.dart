@@ -5,7 +5,7 @@ import 'package:dating_test/src/general/constants/app_pref_key.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:sp_util/sp_util.dart';
 
-class AppFont {
+class AppTheme {
   static String fontBold = "Livvic Bold";
 
   static bool isDarkModeSetting() {
@@ -35,7 +35,7 @@ class AppFont {
 
   static TextStyle getTitleStyle({double? fontSize, Color? color}) {
     return TextStyle(
-      color: color ?? AppFont.getTitleColor(),
+      color: color ?? AppTheme.getTitleColor(),
       fontSize: fontSize ?? 20.toWidthRatio(),
       fontFamily: fontBold,
       fontWeight: FontWeight.w700,
@@ -43,13 +43,13 @@ class AppFont {
   }
 
   static Color getTitleColor() {
-    return AppFont.isDarkModeSetting()
+    return AppTheme.isDarkModeSetting()
         ? const Color(0xFFECF3FB)
         : const Color(0xFF070D15);
   }
 
   static Color getTextColor() {
-    return AppFont.isDarkModeSetting()
+    return AppTheme.isDarkModeSetting()
         ? const Color(0xffECF3FB)
         : const Color(0xff323232);
   }

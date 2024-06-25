@@ -1,3 +1,4 @@
+import 'package:dating_test/src/general/theme/app_theme.dart';
 import 'package:dating_test/src/view/main/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -34,8 +35,10 @@ class _InitPageState extends State<InitPage> {
 
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
+    return  GetMaterialApp(
       // Bổ sung thêm các config khác
+      popGesture: true,
+      themeMode: AppTheme.isDarkModeSetting() ? ThemeMode.dark : ThemeMode.light,
       debugShowCheckedModeBanner: false,
       home: MainPage(),
     );

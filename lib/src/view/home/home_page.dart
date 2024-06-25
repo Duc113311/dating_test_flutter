@@ -1,6 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:dating_test/src/components/loading/load_animation.dart';
-import 'package:dating_test/src/general/theme/app_font.dart';
+import 'package:dating_test/src/general/theme/app_theme.dart';
 import 'package:dating_test/src/view-model/home/card/card_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
