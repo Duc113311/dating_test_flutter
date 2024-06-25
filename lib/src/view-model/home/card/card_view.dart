@@ -25,7 +25,7 @@ class _CardViewState extends State<CardView> {
     return Container(
       width: double.infinity,
       height: double.infinity,
-      color: const Color(0xFF000410),
+      color:  Colors.transparent,
       child: const Align(
         alignment: Alignment.center,
         child: Text("Home",style: TextStyle(color: Colors.white),),

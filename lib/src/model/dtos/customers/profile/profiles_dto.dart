@@ -1,6 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import '../../common/common_dto.dart';
+
 part 'profiles_dto.g.dart';
 
 @JsonSerializable()
@@ -113,6 +114,16 @@ class ProfilesDto {
 
   @override
   Map<String, dynamic> toJson() => _$ProfilesDtoToJson(this);
+
+  static ProfilesDto createEmptyProfile() {
+    final common = ShowCommonDto();
+    return ProfilesDto(
+        showCommon: common,
+        prompts: [],
+        avatars: [],
+        school: '',
+        smartPhoto: false);
+  }
 }
 
 @JsonSerializable()
@@ -173,24 +184,25 @@ class ShowCommonDto {
   @JsonKey(name: 'showDistance', defaultValue: false)
   late bool showDistance;
 
-  ShowCommonDto({
-    required this.showSexual,
-    required this.showGender,
-    required this.showAge,
-    required this.showHeight,
-    required this.showEthnicity,
-    required this.showChildrenPlan,
-    required this.showFamilyPlan,
-    required this.showWork,
-    required this.showSchool,
-    required this.showEducation,
-    required this.showDrinking,
-    required this.showSmoking,
-    required this.showDrug,
-    required this.showDistance,
-  });
+  ShowCommonDto(
+      {this.showSexual = false,
+      this.showGender = false,
+      this.showAge = false,
+      this.showHeight = false,
+      this.showEthnicity = false,
+      this.showChildrenPlan = false,
+      this.showFamilyPlan = false,
+      this.showWork = false,
+      this.showSchool = false,
+      this.showEducation = false,
+      this.showDrinking = false,
+      this.showSmoking = false,
+      this.showDrug = false,
+      this.showDistance = false})
+      : super();
 
-  factory ShowCommonDto.fromJson(Map<String, dynamic> json) => _$ShowCommonDtoFromJson(json);
+  factory ShowCommonDto.fromJson(Map<String, dynamic> json) =>
+      _$ShowCommonDtoFromJson(json);
 
   Map<String, dynamic> toJson() => _$ShowCommonDtoToJson(this);
 }

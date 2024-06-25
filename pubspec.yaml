@@ -47,6 +47,10 @@ dependencies:
   sp_util: ^2.0.3
   json_annotation: ^4.9.0
   camera: ^0.11.0+1
+  firebase_core: ^3.1.0
+  firebase_auth: ^5.1.0
+  flutter_easyloading: ^3.0.5
+  page_transition: ^2.1.0
 
 dev_dependencies:
   flutter_test:
@@ -110,6 +114,15 @@ flutter:
     - family: Livvic Regular
       fonts:
         - asset: assets/fonts/Livvic-Regular.ttf
+    - family: Mulish Bold
+      fonts:
+        - asset: assets/fonts/Mulish-Bold.ttf
+    - family: Mulish Medium
+      fonts:
+        - asset: assets/fonts/Mulish-Medium.ttf
+    - family: Mulish Regular
+      fonts:
+        - asset: assets/fonts/Mulish-Regular.ttf
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

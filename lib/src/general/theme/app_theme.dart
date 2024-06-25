@@ -5,14 +5,18 @@ import 'package:dating_test/src/general/constants/app_pref_key.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:sp_util/sp_util.dart';
 
-class AppTheme {
-  static String fontBold = "Livvic Bold";
+import '../constants/app_colors.dart';
 
+class AppTheme {
   static bool isDarkModeSetting() {
     final value = getDarkModeSetting();
 
     return value == AppPrefKey.kDarkModeOn;
   }
+
+  static String fontBold = "Livvic Bold";
+  static String fontMulishMedium ="Mulish Medium";
+  static String fontLivvicRegular = "Livvic Regular";
 
   static int getDarkModeSetting() {
     int? code = SpUtil.getInt(AppPrefKey.kDarkModeSetting,
@@ -37,7 +41,7 @@ class AppTheme {
     return TextStyle(
       color: color ?? AppTheme.getTitleColor(),
       fontSize: fontSize ?? 20.toWidthRatio(),
-      fontFamily: fontBold,
+      fontFamily: AppTheme.fontBold,
       fontWeight: FontWeight.w700,
     );
   }
@@ -52,5 +56,15 @@ class AppTheme {
     return AppTheme.isDarkModeSetting()
         ? const Color(0xffECF3FB)
         : const Color(0xff323232);
+  }
+
+  static Color getPrimaryColor() {
+    return AppColors.primaryColor;
+  }
+
+  static Color getScaffoldBackgroundColor() {
+    return AppTheme.isDarkModeSetting()
+        ? const Color(0xff000410)
+        : const Color(0xffFCFCFE);
   }
 }

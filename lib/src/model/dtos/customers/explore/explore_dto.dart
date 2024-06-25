@@ -12,10 +12,7 @@ class ExploreDto {
   @JsonKey(name: 'topics', defaultValue: [])
   final List<String> topics;
 
-  ExploreDto({
-    this.verified = 0,
-    this.topics = const [],
-  });
+  ExploreDto({required this.verified, required this.topics});
 
   factory ExploreDto.fromJson(Map<String, dynamic> json) => _$ExploreDtoFromJson(json);
 

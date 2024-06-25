@@ -80,6 +80,12 @@ class CustomerDto {
   @JsonKey(name: 'plusCtrl')
   PlusCtrlDto? plusCtrl;
 
+  @JsonKey(name: 'distanceKm', defaultValue: 0)
+  double? distanceKm;
+
+  @JsonKey(name: 'languageMachine')
+  String? languageMachine;
+
   CustomerDto({
     required this.id,
     this.oAuth2Id,
@@ -110,6 +116,14 @@ class CustomerDto {
       date != null ? DateTime.parse(date) : null;
 
   static String? _dobDateFormat(DateTime? date) => date?.toIso8601String();
+
+  static CustomerDto createEmptyCustomer() {
+    return CustomerDto(
+        fullname: '',
+        id: '',
+        profiles: ProfilesDto.createEmptyProfile(),
+        settings: SettingDto.createEmptySettings());
+  }
 }
 
 // Location

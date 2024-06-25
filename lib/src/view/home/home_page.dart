@@ -13,7 +13,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  bool isLoading = false;
+  bool isLoading = true;
+  bool showSetting = false;
 
   @override
   void initState() {
@@ -52,7 +53,9 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      body: isLoading ? const LoadAnimation() : const CardView(),
+      body: isLoading
+          ? LoadingAnimation(isChangeSetting: showSetting)
+          : const CardView(),
     );
   }
 }

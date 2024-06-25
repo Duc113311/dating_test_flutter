@@ -16,24 +16,31 @@ class SettingDto {
   // Notification email
   @JsonKey(name: 'notiSeenEmail')
   NotiSeenEmailDto? notiSeenEmail;
+
   // Notification app
   @JsonKey(name: 'notiSeenApp')
   NotiSeenAppDto? notiSeenApp;
+
   // Gender filter
   @JsonKey(name: 'genderFilter')
   String? genderFilter;
+
   // Auto play
   @JsonKey(name: 'autoPlayVideo', defaultValue: 'always')
   String? autoPlayVideo;
+
   // Show topic
   @JsonKey(name: 'showTopPick', defaultValue: true)
   bool? showTopPick;
+
   // Hiển thị trạng thi hoạt động
   @JsonKey(name: 'showOnlineStatus', defaultValue: true)
   bool? showOnlineStatus;
+
   // Active account
   @JsonKey(name: 'showActiveStatus', defaultValue: true)
   bool? showActiveStatus;
+
   // incognitoMode
   @JsonKey(name: 'incognitoMode', defaultValue: false)
   bool? incognitoMode;
@@ -52,9 +59,14 @@ class SettingDto {
     this.incognitoMode,
   });
 
-  factory SettingDto.fromJson(Map<String, dynamic> json) => _$SettingDtoFromJson(json);
+  factory SettingDto.fromJson(Map<String, dynamic> json) =>
+      _$SettingDtoFromJson(json);
 
   Map<String, dynamic> toJson() => _$SettingDtoToJson(this);
+
+  static SettingDto createEmptySettings() {
+    return SettingDto();
+  }
 }
 
 // Distance Dto
@@ -137,7 +149,6 @@ class AgePreferenceDto {
 // Notification email
 @JsonSerializable()
 class NotiSeenEmailDto {
-
   // New match
   @JsonKey(name: 'newMatchs', defaultValue: false)
   bool newMatchs;
@@ -149,7 +160,6 @@ class NotiSeenEmailDto {
   // Khuyến mại app
   @JsonKey(name: 'promotions', defaultValue: false)
   bool promotions;
-
 
   NotiSeenEmailDto({
     required this.newMatchs,
@@ -170,23 +180,25 @@ class NotiSeenAppDto {
   // New match
   @JsonKey(name: 'newMatchs', defaultValue: false)
   bool newMatchs;
+
   // massage
   @JsonKey(name: 'incomingMessage', defaultValue: false)
   bool incomingMessage;
+
   // Khuyến mại app
   @JsonKey(name: 'promotions', defaultValue: false)
   bool promotions;
+
   // Supper like
   @JsonKey(name: 'superLike', defaultValue: false)
   bool superLike;
 
-
-  NotiSeenAppDto({
-    required this.newMatchs,
-    required this.incomingMessage,
-    required this.promotions,
-    required this.superLike
-  }) : super();
+  NotiSeenAppDto(
+      {required this.newMatchs,
+      required this.incomingMessage,
+      required this.promotions,
+      required this.superLike})
+      : super();
 
   factory NotiSeenAppDto.fromJson(Map<String, dynamic> json) =>
       _$NotiSeenAppDtoFromJson(json);

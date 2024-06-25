@@ -1,5 +1,8 @@
 plugins {
     id "com.android.application"
+    // START: FlutterFire Configuration
+    id 'com.google.gms.google-services'
+    // END: FlutterFire Configuration
     id "kotlin-android"
     id "dev.flutter.flutter-gradle-plugin"
 }
@@ -33,12 +36,12 @@ android {
     }
 
     defaultConfig {
+
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.dating.heartlink"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdk = flutter.minSdkVersion
-        targetSdk = flutter.targetSdkVersion
+        applicationId = "com.example.dating_test"
+        minSdkVersion 23
+        minSdk 26
+        targetSdk 34
         versionCode = flutterVersionCode.toInteger()
         versionName = flutterVersionName
     }
@@ -56,15 +59,4 @@ flutter {
     source = "../.."
 }
 
-dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.1"
-    implementation 'androidx.browser:browser:1.4.0'
-    implementation 'com.google.firebase:firebase-appcheck-safetynet:16.1.1'
-    implementation 'com.google.firebase:firebase-appcheck-debug:16.0.0-beta01'
-    implementation 'com.google.android.play:integrity:1.1.0'
-    implementation 'com.google.firebase:firebase-auth'
-    implementation 'com.google.android.gms:play-services-safetynet:18.0.1'
-    implementation platform('com.google.firebase:firebase-bom:30.2.0')
-    implementation 'com.google.firebase:firebase-analytics'
-    implementation 'com.facebook.android:facebook-login:14.1.1'
-}
+

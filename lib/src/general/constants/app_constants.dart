@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 
 abstract class AppConstants {
   static final GlobalKey<NavigatorState> globalKeyRootMaterial =
@@ -6,7 +7,7 @@ abstract class AppConstants {
 
   static BuildContext? get context => globalKeyRootMaterial.currentContext;
 
-  static double width = MediaQuery.of(context!).size.width;
-  static double height = MediaQuery.of(context!).size.height;
+  static double width = Get.width;
+  static double height = Get.height;
 }
 

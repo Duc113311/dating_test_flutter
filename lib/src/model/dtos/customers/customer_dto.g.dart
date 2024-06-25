@@ -35,7 +35,9 @@ CustomerDto _$CustomerDtoFromJson(Map<String, dynamic> json) => CustomerDto(
       plusCtrl: json['plusCtrl'] == null
           ? null
           : PlusCtrlDto.fromJson(json['plusCtrl'] as Map<String, dynamic>),
-    );
+    )
+      ..distanceKm = (json['distanceKm'] as num?)?.toDouble() ?? 0
+      ..languageMachine = json['languageMachine'] as String?;
 
 Map<String, dynamic> _$CustomerDtoToJson(CustomerDto instance) =>
     <String, dynamic>{
@@ -57,6 +59,8 @@ Map<String, dynamic> _$CustomerDtoToJson(CustomerDto instance) =>
       'numberBooster': instance.numberBooster,
       'Explore': instance.explore,
       'plusCtrl': instance.plusCtrl,
+      'distanceKm': instance.distanceKm,
+      'languageMachine': instance.languageMachine,
     };
 
 LocationDto _$LocationDtoFromJson(Map<String, dynamic> json) => LocationDto(
