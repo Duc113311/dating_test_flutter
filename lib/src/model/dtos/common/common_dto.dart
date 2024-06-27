@@ -1,7 +1,6 @@
-
 import 'package:json_annotation/json_annotation.dart';
-part 'common_dto.g.dart';
 
+part 'common_dto.g.dart';
 @JsonSerializable()
 class InsertDto {
   // Thời gian chèn
@@ -17,7 +16,8 @@ class InsertDto {
     this.by,
   });
 
-  factory InsertDto.fromJson(Map<String, dynamic> json) => _$InsertDtoFromJson(json);
+  factory InsertDto.fromJson(Map<String, dynamic> json) =>
+      _$InsertDtoFromJson(json);
 
   Map<String, dynamic> toJson() => _$InsertDtoToJson(this);
 }

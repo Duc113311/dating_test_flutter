@@ -1,10 +1,17 @@
 import 'dart:math';
 
 import 'package:dating_test/src/model/stores/local_storage.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class AppUtils {
+
+  final Dio _dio = Dio();
+  Dio get dio => _dio;
+
+
   static const String DATE_TIME_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
   static const String END_POINT = "https://api.heartlinkdating.com";
   static Locale currentLocale = Localizations.localeOf(Get.context!);
@@ -50,6 +57,16 @@ class AppUtils {
   static Map<String, dynamic> removeNullOrEmpty(Map<String, dynamic> json) {
     json.removeWhere((key, value) => value == null || value == '');
     return json;
+  }
+
+  Dio dioAuth() {
+    final authToken = 'Bearer ${LocalStorage.getAccessToken()}';
+    //debugPrint("authToken: $authToken");
+    _dio.options.headers['Authorization'] = authToken;
+    if(Get.context != null) {
+      _dio.options.headers['Accept-Language'] = Intl.getCurrentLocale();
+    }
+    return _dio;
   }
 }
 

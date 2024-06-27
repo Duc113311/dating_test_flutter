@@ -1,4 +1,4 @@
-package com.example.dating_test
+package com.dating.heartlink
 
 import io.flutter.embedding.android.FlutterActivity
 

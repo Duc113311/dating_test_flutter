@@ -6,6 +6,7 @@ import 'package:dating_test/src/model/stores/local_storage.dart';
 import 'package:dating_test/src/view/login/login_page.dart';
 import 'package:dating_test/src/view/main/main_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -51,7 +52,7 @@ class _MainManagerState extends State<MainManager> {
 
   Future<Widget> getNextPage() async {
     String token = LocalStorage.getAccessToken();
-    if (!token.isNotEmpty) {
+    if (token.isEmpty) {
       return const LoginPage();
     } else {
       // await SocketManager.shared().updateAuth(token);
@@ -67,6 +68,9 @@ class _MainManagerState extends State<MainManager> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(systemNavigationBarColor: Colors.white)
+    );
     return Scaffold(
       body: Column(
         children: <Widget>[

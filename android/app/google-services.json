@@ -49,42 +49,6 @@
           ]
         }
       }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:927206952114:android:5bb7b966a0c78aa0d88dab",
-        "android_client_info": {
-          "package_name": "com.example.dating_test"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "927206952114-v3agofb3586cgejqvhavgbljocl9d662.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDhds0TxN-XUh1k5MAMbVeUbc5zV71y6no"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "927206952114-v3agofb3586cgejqvhavgbljocl9d662.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "927206952114-dgpa3hr5odfqqcoitq0j4c9phq3n6g8i.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.amobi.barcode.qrcode.scanner"
-              }
-            }
-          ]
-        }
-      }
     }
   ],
   "configuration_version": "1"

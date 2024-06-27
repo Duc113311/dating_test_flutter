@@ -53,7 +53,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDhds0TxN-XUh1k5MAMbVeUbc5zV71y6no',
-    appId: '1:927206952114:android:5bb7b966a0c78aa0d88dab',
+    appId: '1:927206952114:android:e2364262001eca93d88dab',
     messagingSenderId: '927206952114',
     projectId: 'heartlink-dating-project',
     databaseURL: 'https://heartlink-dating-project-default-rtdb.firebaseio.com',

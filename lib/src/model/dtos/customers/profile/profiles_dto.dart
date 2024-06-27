@@ -124,6 +124,13 @@ class ProfilesDto {
         school: '',
         smartPhoto: false);
   }
+
+  Future<void> sortAvatar() async {
+    if (avatars == null) {
+      return;
+    }
+    avatars!.sort((a, b) => (a.order ?? 0).compareTo((b.order ?? 0)));
+  }
 }
 
 @JsonSerializable()

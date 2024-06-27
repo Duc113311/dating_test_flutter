@@ -124,6 +124,8 @@ class CustomerDto {
         profiles: ProfilesDto.createEmptyProfile(),
         settings: SettingDto.createEmptySettings());
   }
+
+
 }
 
 // Location

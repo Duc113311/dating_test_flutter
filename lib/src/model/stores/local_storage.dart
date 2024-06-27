@@ -61,4 +61,12 @@ class LocalStorage {
   static String getString(String key, [String defaultValue = '']) {
     return GetStorage().read(key) ?? defaultValue;
   }
+
+  static Future<void> setDynamic(String key, dynamic value) async {
+    return await GetStorage().write(key, value);
+  }
+
+  static dynamic getDynamic(String key, dynamic defaultValue) {
+    return GetStorage().read(key) ?? defaultValue;
+  }
 }
