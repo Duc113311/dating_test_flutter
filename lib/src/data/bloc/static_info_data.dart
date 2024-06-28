@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../general/exception/object_ext.dart';
-import '../../model/dtos/common/common_dto.dart';
 import '../../model/dtos/static/static_dto.dart';
 import '../remote/api_end_point.dart';
 import '../repositorys/base_api_static/static_request.dart';

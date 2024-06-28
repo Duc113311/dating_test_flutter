@@ -3,6 +3,8 @@
 import 'package:json_annotation/json_annotation.dart';
 part 'base_dto.g.dart';
 
+
+@JsonSerializable()
 class BaseDto{
   @JsonKey(required: false, defaultValue: '')
   String message;

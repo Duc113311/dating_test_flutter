@@ -10,6 +10,8 @@ import '../../remote/api_end_point.dart';
 class StaticRequest extends BaseDataSource {
   Future<T?> requestStaticInfo<T>(String path) async {
     try {
+      print("path $path");
+      print("ApiEndpoint.getUrlQueryApi $ApiEndpoint.getUrlQueryApi");
       var response = await appClient
           .dioAuth()
           .get(ApiEndpoint.getUrlQueryApi(path))

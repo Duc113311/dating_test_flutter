@@ -13,6 +13,7 @@ import 'package:get/get.dart';
 
 import '../../components/control/widget_control.dart';
 import '../../configs/auth_services.dart';
+import '../../data/bloc/static_info_data.dart';
 import '../../data/repositorys/api_login.dart';
 import '../../data/services/router_service.dart';
 import '../../general/constants/app_images.dart';
@@ -293,7 +294,7 @@ class _LoginPageState extends State<LoginPage> {
     final response = await loginServer(oAuth2Id);
 
     if (response?.customer != null) {
-      // await StaticInfoManager.shared().loadData();
+      await StaticInfoData.shared().loadData();
       EasyLoading.dismiss();
       if (mounted) {
         RouterService.routePushReplacementPage(const MainPage(), context);
@@ -303,7 +304,7 @@ class _LoginPageState extends State<LoginPage> {
       LocalStorage.getMyCustomer().oAuth2Id = oAuth2Id;
       await LocalStorage.saveMyCustomer();
 
-      // await StaticInfoManager.shared().loadData();
+      await StaticInfoData.shared().loadData();
       final email = FirebaseAuth.instance.currentUser?.email ?? "";
       EasyLoading.dismiss();
       if (email.isEmpty) {

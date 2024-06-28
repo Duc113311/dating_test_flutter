@@ -10,7 +10,6 @@ abstract class BaseDataSource {
 
   AppUtils get appClient => getIt<AppUtils>();
 
-
   AccessTokenDto getLocalAccessToken() {
     var accessToken = LocalStorage.getAccessToken();
     if (accessToken == null) {

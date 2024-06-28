@@ -30,7 +30,7 @@ void main() async {
         "FirebaseAuth... current user has been changed!\ndisplayName: ${user?.displayName}, email: ${user?.email},  phone: ${user?.phoneNumber}");
   });
   // Kết nối Config
-
+  configureDependencies();
   // Kết nối firebase messing
 
   runApp(Phoenix(
